@@ -16,6 +16,7 @@
     <url>http://www.example.com</url>
 
     <dependencies>
+        <!-- 依赖taotao-manager-pojo -->
         <dependency>
             <groupId>com.taotao</groupId>
             <artifactId>taotao-manager-pojo</artifactId>
@@ -30,6 +31,7 @@
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
         </dependency>
+        <!-- mybatis分页相关的 -->
         <dependency>
             <groupId>com.github.miemiedev</groupId>
             <artifactId>mybatis-paginator</artifactId>
@@ -49,5 +51,19 @@
             <artifactId>druid</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <!-- 如果不配置mybatis的配置文件会漏掉 -->
+        <!-- 注意：配置了此方式，原来的默认的资源拷贝行为将无效 -->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
 
 </project>
