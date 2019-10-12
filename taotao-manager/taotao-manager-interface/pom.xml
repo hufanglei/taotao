@@ -16,6 +16,7 @@
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
     <dependencies>
+
         <dependency>
             <groupId>com.taotao</groupId>
             <artifactId>taotao-manager-pojo</artifactId>

@@ -1,5 +1,4 @@
 package com.taotao.controller;
-
 import com.taotao.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
