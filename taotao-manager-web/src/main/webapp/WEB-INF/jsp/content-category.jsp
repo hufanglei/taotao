@@ -14,7 +14,9 @@ $(function(){
 		url : '/content/category/list',
 		animate: true,
 		method : "GET",
+        //右击鼠标出发
 		onContextMenu: function(e,node){
+		    //关闭原来的鼠标的默认事件
             e.preventDefault();
             $(this).tree('select',node.target);
             $('#contentCategoryMenu').menu('show',{
