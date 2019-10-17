@@ -1,8 +1,14 @@
 package com.taotao.content.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
+import com.taotao.common.util.JsonUtils;
+import com.taotao.content.jedis.JedisClient;
+import com.taotao.pojo.TbContentExample;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.taotao.common.pojo.TaotaoResult;
@@ -12,9 +18,12 @@ import com.taotao.pojo.TbContent;
 
 @Service
 public class ContentServiceImpl implements ContentService {
-
+	@Autowired
+	private JedisClient client;
 	@Autowired
 	private TbContentMapper mapper;
+	@Value("${CONTENT_KEY}")
+	private String CONTENT_KEY;
 	
 	@Override
 	public TaotaoResult saveContent(TbContent content) {
@@ -26,6 +35,46 @@ public class ContentServiceImpl implements ContentService {
 		//3.插入内容表中
 		mapper.insertSelective(content);
 		return TaotaoResult.ok();
+	}
+
+	@Override
+	public List<TbContent> getContentListByCatId(Long categoryId) {
+		//添加缓存不能影响正常的业务逻辑
+
+		//判断 是否redis中有数据  如果有   直接从redis中获取数据 返回
+
+		try {
+			String jsonstr = client.hget(CONTENT_KEY, categoryId+"");//从redis数据库中获取内容分类下的所有的内容。
+			//如果存在，说明有缓存
+			if(StringUtils.isNotBlank(jsonstr)){
+				System.out.println("这里有缓存啦！！！！！");
+				return JsonUtils.jsonToList(jsonstr, TbContent.class);
+			}
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+
+		//1.注入mapper
+		//2.创建example
+		TbContentExample example = new TbContentExample();
+		//3.设置查询的条件
+		example.createCriteria().andCategoryIdEqualTo(categoryId);//select × from tbcontent where category_id=1
+		//4.执行查询
+		List<TbContent> list = mapper.selectByExample(example);
+		//返回
+		//将数据写入到redis数据库中
+
+		// 注入jedisclient
+		// 调用方法写入redis   key - value
+		try {
+			System.out.println("没有缓存！！！！！！");
+			client.hset(CONTENT_KEY, categoryId+"", JsonUtils.objectToJson(list));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 }

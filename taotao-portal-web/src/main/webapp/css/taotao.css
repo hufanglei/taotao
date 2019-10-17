@@ -2254,8 +2254,6 @@ img.err-price {
 		to(#E13335));
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#E64346",
 		endColorstr="#E13335");
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr="
-		#E64346 ", endColorstr=" #E13335 ")"
 }
 
 #navitems-2013,#navitems-2013 li,#navitems-2013 li a {
@@ -3077,8 +3075,7 @@ img.err-price {
 	background: url(../images/vip.png)
 }
 
-/
-* 
+
 .w1 {
 	padding-top: 8px
 }
@@ -6722,7 +6719,7 @@ a.floor-sort:hover span {
 	height: 18px;
 	overflow: hidden;
 	color: #888;
-	font-family: "microsoft yahei"
+	font-family: "microsoft yahei";
 }
 
 #showcase .sc-list .item .s-hotword li i {
