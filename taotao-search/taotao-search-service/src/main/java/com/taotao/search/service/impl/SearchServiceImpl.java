@@ -78,7 +78,7 @@ public class SearchServiceImpl implements SearchService {
 		//3.调用dao的方法 返回的是SearchResult 只包含了总记录数和商品的列表
 		SearchResult search = searchdao.search(query);
 		//4.设置SearchResult 的总页数
-		long pageCount = 0l;
+		long pageCount = 0L;
 		pageCount = search.getRecordCount()/rows;
 		if(search.getRecordCount()%rows>0){
 			pageCount++;
