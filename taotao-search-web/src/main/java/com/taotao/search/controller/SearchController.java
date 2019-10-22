@@ -29,6 +29,7 @@ public class SearchController {
 		//2.注入
 		//3.调用
 		//处理乱码：
+//		int i = 10 / 0;
 		queryString = new String(queryString.getBytes("iso-8859-1"),"utf-8");
 		
 		SearchResult result = service.search(queryString, page, ITEM_ROWS);
