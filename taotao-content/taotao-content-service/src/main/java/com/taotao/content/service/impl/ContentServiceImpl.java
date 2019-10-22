@@ -1,8 +1,6 @@
 package com.taotao.content.service.impl;
-
 import java.util.Date;
 import java.util.List;
-
 import com.taotao.common.util.JsonUtils;
 import com.taotao.content.jedis.JedisClient;
 import com.taotao.pojo.TbContentExample;
@@ -10,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.content.service.ContentService;
 import com.taotao.mapper.TbContentMapper;
