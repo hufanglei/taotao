@@ -17,6 +17,7 @@
     <url>http://www.example.com</url>
 
     <dependencies>
+
         <!-- 添加接口的依赖 -->
         <dependency>
             <groupId>com.taotao</groupId>
@@ -56,6 +57,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!-- activemq -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
         </dependency>
         <!-- dubbo相关 -->
         <dependency>

@@ -96,7 +96,11 @@
             <groupId>com.hfl</groupId>
             <artifactId>solrj-hfl</artifactId>
         </dependency>
-
+        <!-- activemq -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+        </dependency>
 
 
         <dependency>

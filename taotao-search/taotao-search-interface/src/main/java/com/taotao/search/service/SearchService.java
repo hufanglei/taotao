@@ -21,4 +21,12 @@ public interface SearchService {
      * @throws Exception
      */
     public SearchResult search(String queryString , Integer page, Integer rows) throws Exception;
+
+    /**
+     * 更新索引库
+     * @param itemId
+     * @return
+     * @throws Exception
+     */
+    public TaotaoResult updateSearchItemById(Long itemId) throws Exception;
 }
