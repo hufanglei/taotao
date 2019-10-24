@@ -35,6 +35,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Boolean exists(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Boolean result = jedis.exists(key);
 		jedis.close();
 		return result;
@@ -43,6 +44,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Long expire(String key, int seconds) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Long result = jedis.expire(key, seconds);
 		jedis.close();
 		return result;
@@ -51,6 +53,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Long ttl(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Long result = jedis.ttl(key);
 		jedis.close();
 		return result;
@@ -59,6 +62,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Long incr(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Long result = jedis.incr(key);
 		jedis.close();
 		return result;
@@ -67,6 +71,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Long hset(String key, String field, String value) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Long result = jedis.hset(key, field, value);
 		jedis.close();
 		return result;
@@ -75,6 +80,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public String hget(String key, String field) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		String result = jedis.hget(key, field);
 		jedis.close();
 		return result;
@@ -83,6 +89,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public Long hdel(String key, String... field) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		Long hdel = jedis.hdel(key, field);
 		jedis.close();
 		return hdel;
