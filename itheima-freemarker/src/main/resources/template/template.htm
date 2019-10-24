@@ -1,0 +1,33 @@
+<html>
+<br>
+<!--    测试模板语法-->
+显示pojo <br>
+id: ${person1.id}
+name: ${person1.name}
+<br>
+id: ${person2.id}
+name: ${person2.name}
+<br>
+id: ${person3.id}
+name: ${person3.name}
+<br>
+//取集合数据
+<br>
+<#list list as person>
+    ${person_index}
+    ${person.id}
+    ${person.name}
+</#list>
+map 数据测试 第一种 <br>
+<#list map?keys as key>
+${map[key].id}
+${map[key].name}
+</#list>
+map 数据测试 第二种 <br>
+${map.m1.id}
+${map.m1.name}
+${map.m2.id}
+${map.m2.name}
+${map.m3.id}
+${map.m3.name}
+</html>

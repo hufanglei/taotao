@@ -1,22 +1,27 @@
-package com.taotao.listener;
+package com.taotao.item.listener;
 
-import com.taotao.item.pojo.Item;
-import com.taotao.pojo.TbItem;
-import com.taotao.pojo.TbItemDesc;
-import com.taotao.service.ItemService;
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
-
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.TextMessage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+import javax.servlet.jsp.jstl.core.Config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import com.taotao.item.pojo.Item;
+import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
+import com.taotao.service.ItemService;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 /*
  * 监听器  
  * 获取消息 
@@ -35,14 +40,11 @@ public class ItemChangeGenHtmMessageListener implements MessageListener {
 			TextMessage message2 = (TextMessage)message;
 		    try {
 				Long itemId = Long.valueOf(message2.getText());
-
 				//2.从数据库中获取数据 可以调用manager中的服务   获取到了数据集
 					//引入服务
 					//注入服务
 					//调用
 				TbItem tbItem = itemservcie.getItemById(itemId);
-				System.out.println("打印商品数据");
-				System.out.println(tbItem);
 				Item item = new Item(tbItem);//转成在页面中显示数据时的POJO
 				TbItemDesc tbItemDesc = itemservcie.getItemDescById(itemId);
 				//3.生成静态页面  准备好模板  和 数据集
