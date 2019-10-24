@@ -26,6 +26,7 @@ public class JedisClientPool implements JedisClient {
 	@Override
 	public String get(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		String result = jedis.get(key);
 		jedis.close();
 		return result;

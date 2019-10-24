@@ -1,26 +1,33 @@
 package com.taotao.manager.jedis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
+
 public class JedisClientPool implements JedisClient {
-	
+
 	@Autowired
 	private JedisPool jedisPool;
+
+
 
 	@Override
 	public String set(String key, String value) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		String result = jedis.set(key, value);
 		jedis.close();
 		return result;
 	}
 
+
+
 	@Override
 	public String get(String key) {
 		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
 		String result = jedis.get(key);
 		jedis.close();
 		return result;
@@ -80,6 +87,7 @@ public class JedisClientPool implements JedisClient {
 		Long hdel = jedis.hdel(key, field);
 		jedis.close();
 		return hdel;
-	}	
+	}
+
 
 }
