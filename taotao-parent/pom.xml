@@ -42,11 +42,11 @@
         <quartz.version>2.2.2</quartz.version>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.7.2</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>redis.clients</groupId>-->
+<!--            <artifactId>jedis</artifactId>-->
+<!--            <version>2.7.2</version>-->
+<!--        </dependency>-->
 <!--        <dependency>-->
 <!--            <groupId>org.freemarker</groupId>-->
 <!--            <artifactId>freemarker</artifactId>-->

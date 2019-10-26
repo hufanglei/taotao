@@ -49,12 +49,12 @@ public class JedisTest {
 //	@Test
 //	public void testjediscluster(){
 //		Set<HostAndPort> nodes = new HashSet<>();
-//		nodes.add(new HostAndPort("192.168.25.153", 7001));
-//		nodes.add(new HostAndPort("192.168.25.153", 7002));
-//		nodes.add(new HostAndPort("192.168.25.153", 7003));
-//		nodes.add(new HostAndPort("192.168.25.153", 7004));
-//		nodes.add(new HostAndPort("192.168.25.153", 7005));
-//		nodes.add(new HostAndPort("192.168.25.153", 7006));
+//		nodes.add(new HostAndPort("192.168.157.111", 7001));
+//		nodes.add(new HostAndPort("192.168.157.111", 7002));
+//		nodes.add(new HostAndPort("192.168.157.111", 7003));
+//		nodes.add(new HostAndPort("192.168.157.111", 7004));
+//		nodes.add(new HostAndPort("192.168.157.111", 7005));
+//		nodes.add(new HostAndPort("192.168.157.111", 7006));
 //		//1.创建jediscluster对象
 //		JedisCluster cluster = new JedisCluster(nodes );
 //		//2.直接根据jediscluster对象操作redis集群
