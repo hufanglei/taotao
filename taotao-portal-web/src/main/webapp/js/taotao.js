@@ -12,7 +12,7 @@ var TT = TAOTAO = {
 				if(data.status == 200){
 					alert(33);
 					var username = data.data.username;
-					var html = username + "，欢迎来到淘淘！<a href=\"http://www.taotao.com/user/logout.html\" class=\"link-logout\">[退出]</a>";
+					var html = username + "，欢迎来到淘淘！<a href=\"http://localhost:8088/user/logout/"+_ticket+".html\" class=\"link-logout\">[退出]</a>";
 					$("#loginbar").html(html);
 				}
 			}

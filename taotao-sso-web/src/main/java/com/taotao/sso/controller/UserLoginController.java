@@ -69,9 +69,8 @@ public class UserLoginController {
 	}
 
 	@RequestMapping(value = "/user/logout/{token}",method = RequestMethod.GET)
-	@ResponseBody
-	public TaotaoResult logout(@PathVariable String token){
+	public String logout(@PathVariable String token){
 		TaotaoResult result = loginservice.logout(token);
-		return result;
+		return "redirect:http://localhost:8082";
 	}
 }
