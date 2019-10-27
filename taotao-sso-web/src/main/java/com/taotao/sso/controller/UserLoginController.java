@@ -67,4 +67,11 @@ public class UserLoginController {
 		TaotaoResult result = loginservice.getUserByToken(token);
 		return JsonUtils.objectToJson(result);
 	}
+
+	@RequestMapping(value = "/user/logout/{token}",method = RequestMethod.GET)
+	@ResponseBody
+	public TaotaoResult logout(@PathVariable String token){
+		TaotaoResult result = loginservice.logout(token);
+		return result;
+	}
 }

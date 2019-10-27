@@ -78,4 +78,10 @@ public class UserLoginServiceImpl implements UserLoginService {
 		return TaotaoResult.build(400, "用户已过期");
 	}
 
+	@Override
+	public TaotaoResult logout(String token) {
+		client.expire(USER_INFO+":"+token, 0);
+		return TaotaoResult.ok();
+	}
+
 }

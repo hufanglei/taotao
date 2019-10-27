@@ -25,4 +25,8 @@ public interface UserLoginService {
 	 * @return  TaotaoResult 应该包含用户的信息
 	 */
 	public TaotaoResult getUserByToken(String token);
+	/**
+	 * 安全退出
+	 */
+	TaotaoResult logout(String token);
 }

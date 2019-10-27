@@ -60,6 +60,7 @@
 </form>
 <script type="text/javascript">
 	var redirectUrl = "${redirect}";
+	console.log('redirectUrl==='+redirectUrl);
 	var LOGIN = {
 			checkInput:function() {
 				if ($("#loginname").val() == "") {
