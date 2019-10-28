@@ -1,15 +1,16 @@
-package com.taotao.content.jedis;
+package com.taotao.cart.jedis;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 public class JedisClientPool implements JedisClient {
-	
+
 	@Autowired
 	private JedisPool jedisPool;
-
-
 
 	@Override
 	public String set(String key, String value) {
@@ -19,8 +20,6 @@ public class JedisClientPool implements JedisClient {
 		jedis.close();
 		return result;
 	}
-
-
 
 	@Override
 	public String get(String key) {
@@ -92,6 +91,15 @@ public class JedisClientPool implements JedisClient {
 		Long hdel = jedis.hdel(key, field);
 		jedis.close();
 		return hdel;
-	}	
+	}
+
+	@Override
+	public Map<String, String> hgetAll(String key) {
+		Jedis jedis = jedisPool.getResource();
+		jedis.auth("mypassword");
+		Map<String, String> map = jedis.hgetAll(key);
+		jedis.close();
+		return map;
+	}
 
 }
